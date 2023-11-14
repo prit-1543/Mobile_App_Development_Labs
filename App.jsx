@@ -3,12 +3,8 @@ import { SafeAreaView } from 'react-native';
 import ToDoList from './ToDoList';
 import ToDoForm from './ToDoForm';
 
-function App() {
-  const [tasks, setTasks] = useState([
-    { id: 1, text: 'Do planning' },
-    { id: 2, text: 'Go to dentist' },
-    { id: 3, text: 'GO for Walk' },
-  ]);
+const App = () => {
+  const [tasks, setTasks] = useState(['Do laundry', 'Go to gym', 'Walk dog']);
 
   return (
     <SafeAreaView>
@@ -16,6 +12,6 @@ function App() {
       <ToDoForm />
     </SafeAreaView>
   );
-}
+};
 
 export default App;
