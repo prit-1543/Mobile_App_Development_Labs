@@ -1,32 +1,36 @@
-/**
- * My To Do List App
- *
  * @format
  */
 
-import React/*, { useState }*/ from 'react';
+import React, { useState }/*, { useState }*/ from 'react';
 import {StyleSheet} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-
-import HomeScreen from './screens/Home';
-import AboutScreen from './screens/About';
-
-const Stack = createStackNavigator();
+import ChuckNorrisFact from './ChuckNorrisFact';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import ToDoList from './components/ToDoList';
+import ToDoForm from './components/ToDoForm';
 
 function App() {
+  const [tasks, setTasks] = useState([
+    'Do laundry',
+    'Go to gym',
+    'Walk dog',
+    'Eat food'
+  ]);
+
+
+  const handleAdd = (newTask) => {
+    setTasks([...tasks, newTask]);
+  }
+
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="About" component={AboutScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <SafeAreaView>
+      <ToDoList tasks={tasks} />
+      <ToDoForm onAdd={handleAdd} />
+      <ChuckNorrisFact />
+    </SafeAreaView>
   );
 }
 
-const styles = StyleSheet.create({
-
-});
 
 export default App;
